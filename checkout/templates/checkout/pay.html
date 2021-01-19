@@ -1,0 +1,62 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<br><br>
+      <div class="container text-center">
+        <div class="row">
+          
+          <div class="col-md-12 col-sm-12">
+          <h4>Make Payment</h4>
+          <hr>
+          <br><br>
+          <form>
+			  <script src="https://js.paystack.co/v1/inline.js"></script>
+			  <button type="button" onclick="payWithPaystack()" class="col-md-6 col-sm-12 ps-btn"> Pay </button> 
+        <p><br>You may proceed to make payment, so we can process your order.<br />We are also open to answer your questions; <br /><br />Contact us: <a href="tel:+2348099999068"><h2>(+234) 809 999 9068</h2></a></p>
+			</form>
+
+
+        </div>
+
+          </div>
+        </div>
+      </div>
+      <br><br><br>
+    <hr>
+    
+
+
+
+<!-- place below the html form -->
+<!-- place below the html form -->
+<script>
+  function payWithPaystack(){
+    var handler = PaystackPop.setup({
+      key: 'pk_test_63f455ebba60b2058709180e31a9936c418588d7',
+      email: '{{ order.app_user.email }}',
+      amount: {{ order.cart.total_price }} * 100,
+      ref: ''+Math.floor((Math.random() * 1000000000) + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
+      metadata: {
+         custom_fields: [
+            {
+                display_name: "{{ order.app_user.name }}",
+                variable_name: "{{ order.app_user.name }}",
+                value: "{{ order.app_user.phone }}"
+            }
+         ]
+      },
+      callback: function(response){
+          alert('success. transaction ref is ' + response.reference);
+          window.location.href = "{% url 'checkout:confirm_payment' order.id %}";
+      },
+      onClose: function(){
+          alert('window closed');                                                  
+      }
+    });
+    handler.openIframe();
+  }
+</script>
+
+{% endblock %}

@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="author" content="">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <title>Interior Woodwork Limited -home for all furniture!</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,500,600,700&amp;amp;subset=latin-ext" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'main/plugins/font-awesome/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'main/fonts/Linearicons/Linearicons/Font/demo-files/demo.css' %}">
+    <link rel="stylesheet" href="{% static 'main/plugins/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'main/plugins/owl-carousel/assets/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'main/plugins/owl-carousel/assets/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="{% static 'main/plugins/slick/slick/slick.css' %}">
+    <link rel="stylesheet" href="{% static 'main/plugins/nouislider/nouislider.min.css' %}">
+    <link rel="stylesheet" href="{% static 'main/plugins/lightGallery-master/dist/css/lightgallery.min.css' %}">
+    <link rel="stylesheet" href="{% static 'main/plugins/jquery-bar-rating/dist/themes/fontawesome-stars.css' %}">
+    <link rel="stylesheet" href="{% static 'main/plugins/select2/dist/css/select2.min.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/market-place-1.css' %}"> 
+    <link rel="stylesheet" type="text/css" href="{% static 'main/css/deque-patterns.min.css' %}">
+
+</head>
+<body>
+<style>
+    span{cursor:pointer; }
+        .minus, .plus{
+            width:20px;
+            height:20px;
+            background:#f2f2f2;
+            border-radius:4px;
+            padding:8px 5px 8px 5px;
+            border:1px solid #ddd;
+      display: inline-block;
+      vertical-align: middle;
+      text-align: center;
+        }
+        input{
+            height:34px;
+      width: 100px;
+      text-align: center;
+      font-size: 26px;
+            border:1px solid #ddd;
+            border-radius:4px;
+      display: inline-block;
+      vertical-align: middle;
+            }
+            
+</style>
+
+<style>
+.deque-slider-multirange label {
+  display: inline-block;
+  margin: 10px;
+  padding: 10px;
+  font-size: 10px;
+  font-family: 'Open Sans', sans-serif;
+}
+.deque-slider-multirange label input {
+  margin: 0 0 0 10px;
+  padding: 5px;
+}
+.deque-slider-multirange label input:focus {
+  outline: 1px dashed #000000;
+}
+.deque-slider-multirange .slider {
+  position: relative;
+  height: 4px;
+  background: rgba(0, 0, 0, 0.4);
+  margin-top: 12px;
+}
+.deque-slider-multirange .slider button {
+  height: 24px;
+  width: 8px;
+  background: #0078d7;
+  padding: 0;
+  border-radius: 4px;
+  position: absolute;
+  top: -12px;
+  outline: none;
+  max-width: auto;
+  min-width: auto;
+  border: 1px solid transparent;
+}
+.deque-slider-multirange .slider button:focus,
+.deque-slider-multirange .slider button:active {
+  outline: 1px dashed #000000;
+}
+</style>
+
+
+ <header class="header header--1" data-sticky="true">
+    <nav class="navigation" style="background-color: #6f448b">
+            <div class="ps-container">
+                <div class="navigation__left">
+                    <div class="menu--product-categories">
+                        <div style="color:#fff" class="menu__toggle"><i style="color:#fff" class="icon-phone"></i><span style=""> +234 123 456 78</span></div>
+                    </div>
+                </div>
+                <div class="navigation__right">
+                    <ul class="menu">
+                        <li class="menu-item-has-children"><a href="{% url 'main:index' %}" style="color: #fff;"><small>Home</small></a><span class="sub-toggle"></span></li>
+                        <li class="menu-item-has-children"><a href="{% url 'cart:cart_detail' request.user.id %}" style="color: #fff;"><small>Cart</small></a><span class="sub-toggle"></span></li>
+                        <li class="menu-item-has-children"><a href="{% url 'checkout:checkout' %}" style="color: #fff;"><small>Checkout</small></a><span class="sub-toggle"></span></li>
+                    </ul>
+                    <ul class="navigation__extra">
+                        <li><a href=""><i style="color: #f1c40f" class="fa fa-envelope"></i> info@iwlimited.com</a></li>
+                       
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-{{message.tags}} text-center" style="background-color:  #32CD32; color: #fff" role="alert">
+    <p style="color: #fff">{{ message }}</p>
+    </div>
+    {% endfor %}
+{% endif %}
+        
+    </header>
+    
+    
+    
+    <header class="header header--mobile" data-sticky="true">
+        <div style="background-color: #85298e">
+            <br />
+            <div class="text-center">
+                <p style="color: #fff;">Welcome to Interior Woodwork Limited Online Shopping Store !</p>
+            </div>
+            </br />
+        </div>
+        <div class="navigation--mobile">
+            <div class="navigation__left"><a class="ps-logo" href="{% url 'main:index' %}"><img src="{% static 'main/img/iwl_logo.jpeg' %}" width="50px" height="50px" alt=""></a></div>
+             <div class="navigation__center"><a class="ps-logo" href="{% url 'main:index' %}"><img src="" alt=""></a></div>
+            <div class="navigation__right">
+
+                <div class="header__actions">
+                    <div class="ps-cart--mini"><a class="header__extra" href="{% url 'cart:cart_detail' request.user.id %}"><i class="icon-bag2"></i><span><i>{{ product_quantitys.count }}</i></span></a>
+                        <div class="ps-cart__content">
+                            <div class="ps-cart__items">
+                                {% if product_quantitys %}
+                                        {% for item in product_quantitys %}
+                                            <div class="ps-product--cart-mobile">
+                                                <div class="ps-product__thumbnail"><a href="#"><img src="{{ item.product.image_1.url }}" alt=""></a></div>
+                                                <div class="ps-product__content"><a class="ps-product__remove" href="{% url 'cart:remove_product_cart' item.product.slug %}"><i class="icon-cross"></i></a>
+                                                <a href="{% url 'product:product_detail' item.product.slug %}">{{ item.product.name }}</a><br />
+                                                    <span><strong>Quantity: </strong>{{ item.quantity }}</span><br />
+                                                    <pspan><strong>Price: ₦</strong>{{ item.product.price }}</span><br />
+                                                    <span><strong>Shipping Charge: ₦</strong>{{ item.total_shipping_charge }}</span><br /><br />
+                                                </div>
+                                            </div>
+                                          {% endfor %}
+                                         {% else %}
+                                            <div class="ps-product--cart-mobile">
+                                                <p>No product in your cart, yet!</p>
+                                            </div>
+                                         {% endif %}
+                                </div>
+                                <div class="ps-cart__footer">
+                                    <h3>Total: <strong>₦{{ total_price }}</strong></h3>
+                                    <figure><a class="ps-btn" href="{% url 'cart:cart_detail' request.user.id %}">View Cart</a><a class="ps-btn" href="{% url 'checkout:checkout' %}">Checkout</a></figure>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        {% block search_contenttt %}
+            
+        {% endblock search_contenttt %}
+                
+        
+        {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-{{message.tags}} text-center" style="background-color:  #32CD32; color: #fff" role="alert">
+    <p style="color: #fff; font-size: 15px">{{ message }}</p>
+    </div>
+    {% endfor %}
+{% endif %}
+    </header>
+    
+    
+    
+    
+        <div class="ps-panel--sidebar" id="cart-mobile">
+        <div class="ps-panel__header">
+            <h3>Shopping Cart</h3>
+        </div>
+        <div class="navigation__content">
+            <div class="ps-cart--mobile">
+                <div class="ps-cart__content">
+                    {% if product_quantitys %}
+                           {% for item in product_quantitys %}
+                    <div class="ps-product--cart-mobile">
+                        <div class="ps-product__thumbnail"><a href="#"><img src="{{ item.product.image_1.url }}" alt=""></a></div>
+                        <div class="ps-product__content"><a class="ps-product__remove" href="{% url 'cart:remove_product_cart' item.product.slug %}"><i class="icon-cross"></i></a>
+                        <a href="{% url 'product:product_detail' item.product.slug %}">{{ item.product.name }}</a><br />
+                        <span><strong>Quantity: </strong>{{ item.quantity }}</span><br />
+                        <pspan><strong>Price: ₦</strong>{{ item.product.price }}</span><br />
+                        <span><strong>Shipping Charge: ₦</strong>{{ item.total_shipping_charge }}</span><br /><br />
+                        </div>
+                    </div>
+                   {% endfor %}
+                   {% else %}
+                        <div class="ps-product--cart-mobile">
+                            <p>Sorry, Nothing Yet!</p>
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="ps-cart__footer">
+                    <h3>Total: ₦<strong>{{ total_price }}</strong></h3>
+                    <figure><a class="ps-btn" href="{% url 'cart:cart_detail' request.user.id %}">View Cart</a><a class="ps-btn" href="{% url 'checkout:checkout' %}">Checkout</a></figure>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ps-panel--sidebar" id="navigation-mobile">
+        <div class="ps-panel__header">
+            <h3>Categories</h3>
+        </div>
+        <div class="ps-panel__content">
+            <ul class="menu--mobile">
+                <li><a href="{% url 'main:category' 'living_room' %}"> Living Room</a>
+                </li>
+                <li><a href="{% url 'main:category' 'kitchen' %}"> Kitchen</a>
+                </li>
+                <li><a href="{% url 'main:category' 'bedroom' %}"> Bedroom</a>
+                </li>
+                <li><a href="{% url 'main:category' 'office' %}"> Office</a>
+                </li>
+                <li><a href="{% url 'main:category' 'sofa' %}"> Sofa</a>
+                </li>
+                <li><a href="{% url 'main:category' 'wardrobe' %}"> Wardrobes</a>
+                </li>
+                <li><a href="{% url 'main:category' 'center_table' %}"> Center Tables</a>
+                </li>
+                <li><a href="{% url 'main:category' 'stool' %}"> Stools</a>
+                </li>
+                <li><a href="{% url 'main:category' 'wall_partition' %}"> Wall Partition</a>
+                </li>
+                <li><a href="{% url 'main:category' 'bed' %}"> Beds</a>
+                </li>
+                <li><a href="{% url 'main:category' 'dining' %}"> Dining</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="navigation--list">
+        <div class="navigation__content">
+        <a class="navigation__item ps-toggle--sidebar" href="#menu-mobile"><i class="icon-menu"></i><span> Menu</span></a><a class="navigation__item ps-toggle--sidebar" href="#navigation-mobile"><i class="icon-list4"></i><span> Categories</span>
+        </a>
+        <a class="navigation__item ps-toggle--sidebar" href="#cart-mobile"><i class="icon-bag2"></i><span style="color: #5a6981"> Cart</span></a></div>
+    </div>
+    
+    
+    {% block search_content %}
+            
+    {% endblock search_content %}
+    
+    
+    
+    <div class="ps-panel--sidebar" id="menu-mobile">
+        <div class="ps-panel__header">
+            <h3>Menu</h3>
+        </div>
+        <div class="ps-panel__content">
+            <ul class="menu--mobile">
+                <li class="menu-item-has-children"><a href="{% url 'main:index' %}">Home</a><span class="sub-toggle"></span>
+                </li>
+                <li class="menu-item-has-children"><a href="{% url 'main:index' %}">Shop</a><span class="sub-toggle"></span>
+                </li>
+                <li class="menu-item-has-children"><a href="{% url 'cart:cart_detail' request.user.id %}">My Cart</a><span class="sub-toggle"></span>
+                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+            {% block content %}
+            
+            {% endblock content %}
+
+
+
+
+    <footer class="ps-footer" style="background:#6f448b">
+        <div class="ps-container">
+            <div class="ps-footer__widgets">
+                <aside class="widget widget_footer widget_contact-us">
+                    <h3 class="widget-title" style="color: #f1c40f">Interior Woodwork Limited</h3>
+                    <div class="widget_content">
+                        <h4 style="color: #fff"><i style="color: #f1c40f" class="fa fa-file"></i> About Interior Woodwork Limited</h4>
+                        <h4 style="color:#fff"><i style="color: #f1c40f" class="fa fa-phone-square"></i> +234 123 456 78</h4>
+                        <h4><a href="mailto:info@iwlimited.com"  style="color: #fff"><i style="color: #f1c40f" class="fa fa-envelope"></i> info@iwlimited.com</a></h4>
+                        <ul class="ps-list--social">
+                            <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a class="google-plus" href="#"><i class="fa fa-google-plus"></i></a></li>
+                            <li><a class="instagram" href="#"><i class="fa fa-instagram"></i></a></li>
+                        </ul>
+                    </div>
+                </aside>
+                <aside class="widget widget_footer">
+                    <h4 class="widget-title"  style="color: #f1c40f">WE CARE!</h4>
+                    <ul class="ps-list--link">
+                        <li><a href="{% url 'main:privacy' %}" style="color: #fff"><i style="color: #f1c40f" class="fa fa-eye"></i> Privacy Policy</a></li>
+                        <li><a href="{% url 'main:termscondition' %}" style="color: #fff"><i style="color: #f1c40f" class="fa fa-cogs"></i> Term & Condition</a></li>
+                        <li><a href="{% url 'main:shipping' %}" style="color: #fff"><i style="color: #f1c40f" class="fa fa-truck"></i> Shipping</a></li>
+                        <li><a href="{% url 'main:faqs' %}" style="color: #fff"><i style="color: #f1c40f" class="fa fa-info-circle"></i> FAQs</a></li>
+                    </ul>
+                </aside>
+                <aside class="widget widget_footer">
+                    <h4 class="widget-title"  style="color: #f1c40f">Quick links</h4>
+                    <ul class="ps-list--link">
+                        <li><a href="https://blog.iwlimited.com" style="color: #fff"><i style="color: #f1c40f" class="icon-network"></i> Blog</a></li>
+                        <li><a href="#" style="color: #fff"><i style="color: #f1c40f" class="fa fa-envelope"></i> Newsletter</a></li>
+                        <li><a href="#" style="color: #fff"><i style="color: #f1c40f" class="fa fa-undo"></i> Return</a></li>
+                    </ul>
+                </aside>
+                <aside class="widget widget_footer">
+                    <h4 class="widget-title" style="color: #f1c40f">Locations</h4>
+                    <ul class="ps-list--link">
+                        <li><a href="#" style="color: #fff"><small>FACTORY: Plot 58, Idu Industrial Layout, Idu Phase 1, Karmo, Abuja.</small></a></li>
+                         <li><a href="#" style="color: #fff"><small>LAGOS SHOWROOM: 14B Akin Adesola, Victoria Island, Lagos.</small></a></li>
+                         <li><a href="#" style="color: #fff"><small>KADUNA SHOWROOM: No. 17 Sultan Road, Malali, Kaduna North, Kaduna</small></a></li>
+                         <li><a href="#" style="color: #fff"><small>ABUJA SHOWROOM: Plot 495, Aminu Kano Crescent, Wuse 2, Abuja.</small></a></li>
+                         
+                    </ul>
+                </aside>
+                <aside class="widget widget_footer">
+                    <h4 class="widget-title" style="color: #f1c40f">Menu</h4>
+                    <ul class="ps-list--link">
+                        <li><a href="{% url 'main:index' %}" style="color: #fff"><i style="color: #f1c40f" class="fa fa-home"></i> Home</a></li>
+                        <li><a href="{% url 'cart:cart_detail' request.user.id %}" style="color: #fff"><i style="color: #f1c40f" class="fa fa-shopping-bag"></i> My Cart</a></li>
+                        <li><a href="{% url 'checkout:checkout' %}" style="color: #fff"><i style="color: #f1c40f" class="fa fa-credit-card"></i> Checkout</a></li>
+                    </ul>
+                </aside>
+            </div>
+            <div class="ps-footer__copyright">
+                <p style="color: #fff">© 2020 Interior Woodwork Limited. All Rights Reserved</p>
+                <p><span style="color: #fff">Payment Methods:</span><a href="#"><img src="{% static 'main/img/payment-method/paypal.png' %}" alt=""></a><a href="#"><img src="{% static 'main/img/payment-method/visa.png' %}" alt=""></a><a href="#"><img src="{% static 'main/img/payment-method/mastercard.png' %}" alt=""></a><a href="#"><img src="{% static 'main/img/payment-method/express.png' %}" alt=""></a><a href="#"><img src="{% static 'main/img/payment-method/discover.png' %}" alt=""></a></p>
+            </div>
+        </div>
+    </footer>
+    <div id="back2top"><i class="pe-7s-angle-up"></i></div>
+    <div class="ps-site-overlay"></div>
+    <div id="loader-wrapper">
+        <div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+    </div>
+    <div class="ps-search" id="site-search"><a class="ps-btn--close" href="#"></a>
+        <div class="ps-search__content">
+            <form class="ps-form--primary-search" action="do_action" method="post">
+                <input class="form-control" type="text" placeholder="Search for...">
+                <button><i class="aroma-magnifying-glass"></i></button>
+            </form>
+        </div>
+    </div>
+
+    <script src="{% static 'main/plugins/jquery.min.js' %}"></script>
+    <script src="{% static 'main/plugins/nouislider/nouislider.min.js' %}"></script>
+    <script src="{% static 'main/plugins/popper.min.js' %}"></script>
+    <script src="{% static 'main/plugins/owl-carousel/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'main/plugins/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'main/plugins/imagesloaded.pkgd.min.js' %}"></script>
+    <script src="{% static 'main/plugins/masonry.pkgd.min.js' %}"></script>
+    <script src="{% static 'main/plugins/isotope.pkgd.min.js' %}"></script>
+    <script src="{% static 'main/plugins/jquery.matchHeight-min.js' %}"></script>
+    <script src="{% static 'main/plugins/slick/slick/slick.min.js' %}"></script>
+    <script src="{% static 'main/plugins/jquery-bar-rating/dist/jquery.barrating.min.js' %}"></script>
+    <script src="{% static 'main/plugins/slick-animation.min.js' %}"></script>
+    <script src="{% static 'main/plugins/lightGallery-master/dist/js/lightgallery-all.min.js' %}"></script>
+    <script src="{% static 'main/plugins/sticky-sidebar/dist/sticky-sidebar.min.js' %}"></script>
+    <script src="{% static 'main/plugins/select2/dist/js/select2.full.min.js' %}"></script>
+    <script src="{% static 'main/plugins/gmap3.min.js' %}"></script>
+    <!-- custom scripts-->
+    <script src="{% static 'main/js/main.js' %}"></script>
+    <script type="text/javascript" src="{% static 'main/plugins/deque-patterns.min.js' %}"></script>
+    
+       <script>
+    $(document).ready(function() {
+            $('.minus').click(function () {
+                var $input = $(this).parent().find('input');
+                var count = parseInt($input.val()) - 1;
+                count = count < 1 ? 1 : count;
+                $input.val(count);
+                $input.change();
+                return false;
+            });
+            $('.plus').click(function () {
+                var $input = $(this).parent().find('input');
+                $input.val(parseInt($input.val()) + 1);
+                $input.change();
+                return false;
+            });
+        });
+   
+   </script>
+   
+   <script>
+   var formatter = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+  minimumFractionDigits: 0,
+});
+
+function formatMoney(v) {
+  return formatter.format(v);
+}
+
+function deformatMoney(v) {
+  return parseFloat(v.replace(/[^0-9-.]/g, ''));
+}
+
+function removeDollarSign(v) {
+  return v.replace(/(\.|\,|\$)+/g, '');
+}
+
+function showMessage(message, classes) {
+  var alert = deque.createAlert(message, classes);
+  alertRegion.appendChild(alert);
+  createAriaLiveContainer(message);
+}
+
+function createAriaLiveContainer(message) {
+  var liveregion_assertive = document.querySelector('#liveregion_assertive');
+  if(!liveregion_assertive) {
+    var parentDequeSliderContainer = document.querySelector('.deque-slider-multirange');
+    var liveRegionElement = document.createElement('div');
+    liveRegionElement.id = 'liveregion_assertive';
+    liveRegionElement.setAttribute('role', 'alert');
+    liveRegionElement.setAttribute('aria-live', 'assertive');
+    liveRegionElement.setAttribute('aria-atomic', 'true');
+    liveRegionElement.style.height = '0px';
+    liveRegionElement.style.overflow = 'hidden';
+    parentDequeSliderContainer.appendChild(liveRegionElement);
+  }
+  document.getElementById('liveregion_assertive').innerText = message;
+}
+
+var multirangeSlider = document.querySelector(".deque-slider-multirange");
+
+var startThumb = multirangeSlider.querySelector('.minPrice');
+var stopThumb = multirangeSlider.querySelector('.maxPrice');
+
+var thumbs = [{
+  label: startThumb.getAttribute('aria-label'),
+  labelFromValue: formatMoney,
+  stepSize: startThumb.getAttribute('data-increment'),
+  initialValue: startThumb.getAttribute('aria-valuenow'),
+  classes: [],
+  textParser: deformatMoney
+},{
+  label: stopThumb.getAttribute('aria-label'),
+  labelFromValue: formatMoney,
+  stepSize: stopThumb.getAttribute('data-increment'),
+  initialValue: stopThumb.getAttribute('aria-valuenow'),
+  classes: [],
+  textParser: deformatMoney
+}]
+
+var minValue = startThumb.getAttribute('aria-valuemin');
+minValue = parseInt(minValue);
+var maxValue = startThumb.getAttribute('aria-valuemax');
+maxValue = parseInt(maxValue);
+var orientation = startThumb.getAttribute('aria-orientation');
+
+deque.createMultirange(multirangeSlider, thumbs, minValue, maxValue, orientation);
+
+var alertRegion = multirangeSlider.querySelector('#alertRegion');
+
+var startThumb = multirangeSlider.querySelector('.minPrice');
+var stopThumb = multirangeSlider.querySelector('.maxPrice');
+var multirangeLabel = multirangeSlider.querySelector('#label');
+
+var startInput = multirangeSlider.querySelector('input:first-child');
+var stopInput = multirangeSlider.querySelector('label:nth-of-type(2) input');
+
+
+startInput.addEventListener('blur', validateInputs);
+startInput.addEventListener('keydown', onEnter);
+stopInput.addEventListener('blur', validateInputs);
+stopInput.addEventListener('keydown', onEnter);
+
+startInput.addEventListener('keyup', triggerEmptyMessage);
+stopInput.addEventListener('keyup', triggerEmptyMessage);
+
+function triggerEmptyMessage(e) {
+  if(e.currentTarget.value.length != 0) {
+    createAriaLiveContainer('');
+  }
+}
+
+startThumb.addEventListener('click', function(e) {
+  e.currentTarget.focus();
+});
+
+stopThumb.addEventListener('click', function(e) {
+  e.currentTarget.focus();
+});
+
+function onEnter(e) {
+  if(e.which === 13) {
+    validateInputs(e);
+  }
+}
+
+function validateInputs(e) {
+  alertRegion.innerHTML = '';
+  if(!e.currentTarget.value) {
+    e.currentTarget.focus();
+    e.target.classList.add('invalid');
+    showMessage('Value can not be empty', ['error']);
+    e.target.setAttribute('aria-invalid', true);
+    return false;
+  } else {
+    createAriaLiveContainer('');
+    e.target.classList.remove('invalid');
+    e.target.removeAttribute('aria-invalid');
+  }
+
+  var newVal = deformatMoney(e.target.value);
+  var maxVal = startThumb.getAttribute('aria-valuemax');
+  var minVal = startThumb.getAttribute('aria-valuemin');
+  var maxValNow = stopThumb.getAttribute('aria-valuenow');
+  var minValNow = startThumb.getAttribute('aria-valuenow');
+
+
+
+  if (newVal > maxVal || newVal < minVal) {
+    e.target.classList.add('invalid');
+    showMessage('Value must be between $150,000 and $450,000', ['error']);
+    e.target.setAttribute('aria-invalid', true);
+    e.currentTarget.focus();
+  } else if (isNaN(removeDollarSign(e.target.value))) {
+    e.target.classList.add('invalid');
+    showMessage('Please enter a valid dollar amount', ['error']);
+    e.target.setAttribute('aria-invalid', true);
+    e.currentTarget.focus();
+  } else if (minValNow > maxValNow){
+    e.target.classList.add('invalid');
+    showMessage('The minimum value must be less than the maximum value', ['error']);
+    e.target.setAttribute('aria-invalid', true);
+    e.currentTarget.focus();
+  } else {
+    e.target.classList.remove('invalid');
+    e.target.removeAttribute('aria-invalid');
+  }
+}
+
+multirangeSlider.addEventListener('change', setMultirangeSliderLabel);
+multirangeSlider.addEventListener('change', validateSlider);
+
+function validateSlider(e){
+  alertRegion.innerHTML = '';
+  var maxValNow = stopThumb.getAttribute('aria-valuenow');
+  var minValNow = startThumb.getAttribute('aria-valuenow');
+  if (minValNow > maxValNow){
+    e.target.classList.add('invalid');
+    showMessage('The minimum value must be less than the maximum value', ['error']);
+    e.target.setAttribute('aria-invalid', true);
+  } else {
+    createAriaLiveContainer('');
+    e.target.classList.remove('invalid');
+    e.target.removeAttribute('aria-invalid');
+  }
+  e.target.focus();
+}
+
+function setMultirangeSliderLabel() {
+  var label = 'Between ' + startThumb.getAttribute('aria-valuetext');
+  label += ' and ' + stopThumb.getAttribute('aria-valuetext');
+
+  multirangeLabel.innerText = label;
+}
+
+setMultirangeSliderLabel();
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>Admin User Dashboard</title>
+	</head>
+
+	<body>
+
+		<div class="container">
+
+			<div class="row">
+				<h1>Admin User Dashboard:</h1>
+				<hr>
+			</div>
+			<br />
+			<br />
+			<br />
+
+			<div class="row">
+				{% if orders %}
+					{% for item in orders %}
+						<small><b>Name:</b> {{ item.app_user.name }}</small><br />
+						<small><b>Phone:</b> {{ item.app_user.phone }}</small><br />
+						<small><b>Email:</b> {{ item.app_user.email }}</small><br />
+						<small><b>Address:</b> {{ item.app_user.address }}</small><br />
+						<hr>
+						<small><b>Ordered Products:</b> {{ item.total_products }}</small><br />
+						<ul>
+							{% for item2 in item.cart.product_quantitys.all %}
+								<li>{{ item2.product.name }}({{ item2.quantity }})</li>
+							{% endfor %}
+						</ul>
+						<br />
+						<small><b>Total Price:</b> N{{ item.cart.total_price }}</small><br />
+						<small><b>Order Note:</b> {{ item.order_note }}</small><br />
+						<small><b>Payment Status:</b> {{ item.status }}</small>
+						<br/><br/><br/><br />
+
+					{% endfor %}
+				{% endif %}
+			</div>
+				
+
+			
+		</div>
+
+	</body>
+
+</html>

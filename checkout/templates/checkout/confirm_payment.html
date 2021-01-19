@@ -1,0 +1,35 @@
+ {% extends 'main/base.html' %}
+{% load static %}
+  
+
+
+{% block content %}
+<div class="container text-center">
+	<br><br> 
+        <div class="row">
+         
+          <div class="col-md-12 col-sm-12">
+
+          <h2>Confirm Payment</h2>
+          
+          <hr>
+ <form method="post" enctype="multipart/form-data">
+		{% csrf_token %}
+		<br><br> 
+	<button class="ps-btn col-md-6 col-sm-12">Confirm</button> 
+	<br><br> 
+	<p>Please acknowledge that you have just made payment for your order.
+    <h2 style="color: green;">(by clicking the 'confirm' button)</h2>
+    <br />So we can be able to process your request as soon as possible.
+  </p>
+
+
+</form>
+</div>
+</div>
+</div>
+<br><br><br>
+<hr>
+
+
+{% endblock %}

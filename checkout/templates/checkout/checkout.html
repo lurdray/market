@@ -1,0 +1,112 @@
+ {% extends 'main/base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+
+		<div class="ps-checkout ps-section--shopping">
+            <div class="container" style="margin-top: -50px">
+                <div class="ps-section__header">
+                    <h1>Place Your Order</h1>
+                </div>
+                <div class="ps-section__content">
+                    <form class="ps-form--checkout" method="post" enctype="multipart/form-data">
+				{% csrf_token %}
+                        <div class="row">
+                            <div class="col-xl-7 col-lg-8 col-md-12 col-sm-12  ">
+                                <div class="ps-form__billing-info">
+                                    <h3 class="ps-form__heading">Your Details:</h3>
+                                    <div class="form-group">
+                                        <label>Your Full Name<sup>*</sup>
+                                        </label>
+                                        <div class="form-group__content">
+                                            <input style="text-align: left" name="name" class="form-control" type="text" value="{{ app_user.name }}" required="required">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Your Phone Number
+                                        </label>
+                                        <div class="form-group__content">
+                                            <input style="text-align: left" name="phone" class="form-control" value="{{ app_user.phone }}" type="text" required="required">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Your Email Address<sup>*</sup>
+                                        </label>
+                                        <div class="form-group__content">
+                                            <input style="text-align: left" name="email" class="form-control" value="{{ app_user.email }}" type="email" required="required">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Your Address<sup>*</sup>
+                                        </label>
+                                        <div class="form-group__content">
+                                            <textarea name="address" class="form-control" rows="7" placeholder="Please enter your correct address">{{ app_user.address }}</textarea>
+                                        </div>
+                                    </div> 
+                                    <h3 class="mt-40"> Addition information</h3>
+                                    <div class="form-group">
+                                        <label>Order Notes</label>
+                                        <div class="form-group__content">
+                                            <textarea name="order_note" class="form-control" rows="7" placeholder="Please enter any special notes for delivery.">{{ app_user.order_note }}</textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card col-xl-5 col-lg-4 col-md-12 col-sm-12  ">
+                                <div class="ps-form__total">
+                                    <h3 class="ps-form__heading">Your Order</h3>
+                                    <div class="content">
+                                        <div class="ps-block--checkout-total">
+                                            <div class="ps-block__header">
+                                            </div>
+                                            <div class="ps-block__content">
+                                                <table class="table ps-block__products">
+                                                    <tbody>
+                                                    	{% if product_quantitys %}
+                                                        <ul>
+                                                    		{% for item in product_quantitys %}
+                                                                
+                                                                    <li>
+                                                                        <small>Name: {{ item.product.name }}</small><br />
+                                                                    </li>
+                                                                    <li>
+                                                                        <small>Quantity: {{ item.quantity }}</small><br />
+                                                                    </li>
+                                                                    <li>
+                                                                        <small>Price: {{ item.product.price }}</small><br />
+                                                                    </li>
+                                                                    <li>
+                                                                        <small>Shipping Charge: {{ item.product.total_shipping_charge }}</small><br />
+                                                                    </li>
+
+                                                                    <hr>
+
+				                                              {% endfor %}
+				                                              
+				                                              {% else %}
+				                                              	 <tr>
+				                                                    <td>
+				                                                    	<p>Sorry, Nothing Yet!</p>
+				                                                    </td>
+				                                                   </tr>
+                                                                </ul>
+				                                              {% endif %}
+                                                    </tbody>
+                                                </table>
+                                                <h3>Total <span>₦{{ total_price }}</span></h3>
+                                            </div>
+                                        </div><button class="ps-btn ps-btn--fullwidth">Submit Your Order</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+ {% endblock %}
