@@ -1,0 +1,145 @@
+
+ {% extends 'main/base.html' %}
+{% load static %}
+  
+
+
+{% block content %}
+<div class="container text-centers">
+
+<div class="ps-block--product-box">
+    <br />
+    <div class="ps-block__header">
+        <h3><i class="icon-laundry"></i>#{{ category }} category</h3>
+        <br />
+    </div>
+    <div class="container">
+        <br />
+        <p>Note: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+     </div>
+    <div class="ps-block__content">
+        <div class="ps-block__left">
+            <div class="ps-carousel--nav-inside owl-slider" data-owl-auto="true" data-owl-loop="true" data-owl-speed="5000" data-owl-gap="0" data-owl-nav="true" data-owl-dots="true" data-owl-item="1" data-owl-item-xs="1" data-owl-item-sm="1" data-owl-item-md="1" data-owl-item-lg="1" data-owl-duration="1000" data-owl-mousedrag="on">
+                {% if category == 'living_room' %}
+                    <a href="#"><img src="{% static 'main/img/lr.png' %}" alt=""></a>
+                    <a href="#"><img src="{% static 'main/img/lr.png' %}" alt=""></a>
+
+                {% elif category == 'kitchen' %}
+                    <a href="#"><img src="{% static 'main/img/kt.png' %}" alt=""></a>
+                    <a href="#"><img src="{% static 'main/img/kt.png' %}" alt=""></a>
+                {% elif category == 'bedroom' %}
+                    <a href="#"><img src="{% static 'main/img/br.png' %}" alt=""></a>
+                    <a href="#"><img src="{% static 'main/img/br.png' %}" alt=""></a>
+
+                    {% elif category == 'office' %}
+                    <a href="#"><img src="{% static 'main/img/of.png' %}" alt=""></a>
+                    <a href="#"><img src="{% static 'main/img/of.png' %}" alt=""></a>
+
+                {% endif %}
+            </div>
+            <div class="ps-block__products ps-tab-root">
+                <br />
+                <p>Notetate velit esse
+                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <ul class="ps-tab-list">
+                    <li class="current"><a href="#product-box-1">New Arrivals</a></li>
+                </ul>
+                <div class="ps-tabs">
+                    <div class="ps-tab active" id="product-box-1">
+                        <div class="row">
+                            {% if product_one %}
+                                {% for item in product_one %}
+                                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-4 col-6 ">
+                                        <div class="ps-product">
+                                            <div class="ps-product__thumbnail"><a href="{% url 'product:product_detail' item.slug %}"><img src="{{ item.image_1.url }}" alt=""></a>
+                                                <div class="ps-product__badge">{{ item.tag_title }}</div>
+                                                <ul class="ps-product__actions">
+                                                    <li><a href="{% url 'cart:add_product_to_cart' item.slug %}" data-toggle="tooltip" data-placement="top" title="Add to cart"><i class="icon-bag2"></i></a></li>
+                                                    <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#{{ item.slug }}"><i class="icon-eye"></i></a></li>
+                                                    <li><a href="{% url 'product:product_detail' item.slug %}" data-toggle="tooltip" data-placement="top" title=""><i class="icon-heart"></i></a></li>
+                                                    <li><a href="{% url 'product:product_detail' item.slug %}" data-toggle="tooltip" data-placement="top" title=""><i class="icon-chart-bars"></i></a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="ps-product__container"><a class="ps-product__vendor" href="{% url 'product:product_detail' item.slug %}">{{ item.category }}</a>
+                                                <div class="ps-product__content"><a class="ps-product__title" href="{% url 'product:product_detail' item.slug %}">{{ item.name }}</a>
+                                                    <div class="ps-product__rating">
+                                                        <select class="ps-rating" data-read-only="true">
+                                                            <option value="1">1</option>
+                                                            <option value="1">2</option>
+                                                            <option value="1">3</option>
+                                                            <option value="1">4</option>
+                                                            <option value="2">5</option>
+                                                        </select>
+                                                    </div>
+                                                    <p class="ps-product__price sale">₦{{ item.price }}<del>₦{{ item.old_price }} </del></p>
+                                                </div>
+                                                <div class="ps-product__content hover"><a class="ps-product__title" href="{% url 'product:product_detail' item.slug %}">{{ item.name }}</a>
+                                                    <p class="ps-product__price sale">₦{{ item.price }}<del>₦{{ item.old_price }} </del></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+
+                            {% else %}
+                                <p>Sorry, Nothing Yet!</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ps-block__right">
+            <figure>
+                <figcaption>Recommended For You</figcaption>
+                {% if product_two %}
+                    {% for item in product_two %}
+                        <div class="ps-product--horizontal">
+                            <div class="ps-product__thumbnail"><a href="{% url 'product:product_detail' item.slug %}"><img src="{{ item.image_1.url }}" alt=""></a></div>
+                            <div class="ps-product__content"><a class="ps-product__title" href="product-default.html">{{ item.name }}</a>
+                                <p class="ps-product__price sale">N{{ item.price }}<del>N{{ item.old_price }}</del></p>
+                            </div>
+                        </div>
+                    {% endfor %}
+
+                {% else %}
+                    <p>Sorry, Nothing Yet!</p>
+                {% endif %}
+            </figure>
+            <br />
+            <p>Note: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+    </div>
+</div>
+    
+    <br />
+    <br />
+    <br />
+    <p>Note: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+
+
+</div>
+</div>
+</div>
+<br><br><br>
+<hr>
+
+
+{% endblock %}

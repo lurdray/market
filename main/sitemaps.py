@@ -6,3 +6,6 @@ class ProductSitemap(Sitemap):
 	def items(self):
 		return Product.objects.all()
 
+
+
+

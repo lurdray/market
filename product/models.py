@@ -48,6 +48,16 @@ class Product(models.Model):
 
 	delivery_info = models.CharField(max_length=150, default="none")
 
+	#state shippings
+	abia_shipping = models.IntegerField(default=1)
+	adamawa_shipping = models.IntegerField(default=1)
+	akwaibom_shipping = models.IntegerField(default=1)
+	anambra_shipping = models.IntegerField(default=1)
+
+
+
+
+
 	slug = models.SlugField(unique=True, default="rayslug")
 	pub_date = models.DateTimeField(default=timezone.now)
 

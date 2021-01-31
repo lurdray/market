@@ -186,7 +186,7 @@
                                                 <div class="ps-product__content"><a class="ps-product__remove" href="{% url 'cart:remove_product_cart' item.product.slug %}"><i class="icon-cross"></i></a><a href="{% url 'product:product_detail' item.product.slug %}">{{ item.product.name }}</a><br />
                                                     <span><strong>Quantity: </strong>{{ item.quantity }}</span><br />
                                                     <span><strong>Price: ₦</strong>{{ item.product.price }}</span><br />
-                                                    <span><strong>Shipping Charge: ₦</strong>{{ item.total_shipping_charge }}</span><br /><br />
+                                                    <br />
                                                 </div>
                                             </div>
                                           {% endfor %}
@@ -256,7 +256,7 @@
                                                 <div class="ps-product__content"><a class="ps-product__remove" href="{% url 'cart:remove_product_cart' item.product.slug %}"><i class="icon-cross"></i></a><a href="{% url 'product:product_detail' item.product.slug %}">{{ item.product.name }}</a><br />
                                                     <span><strong>Quantity: </strong>{{ item.quantity }}</span><br />
                                                     <span><strong>Price: ₦</strong>{{ item.product.price }}</span><br />
-                                                    <span><strong>Shipping Charge: ₦</strong>{{ item.total_shipping_charge }}</span><br /><br />
+                                                    <br />
                                                 </div>
                                             </div>
                                           {% endfor %}
@@ -298,7 +298,6 @@
                    <div class="ps-product__content"><a class="ps-product__remove" href="{% url 'cart:remove_product_cart' item.product.slug %}"><i class="icon-cross"></i></a><a href="{% url 'product:product_detail' item.product.slug %}">{{ item.product.name }}</a><br />
                       <span><strong>Quantity: </strong>{{ item.quantity }}</span><br />
                      <span><strong>Price: ₦</strong>{{ item.product.price }}</span><br />
-                     <span><strong>Shipping Charge: ₦</strong>{{ item.total_shipping_charge }}</span><br /><br />
                      </div>
                      </div>
                    {% endfor %}

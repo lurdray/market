@@ -8,6 +8,17 @@
 
 <div class="ps-page--product">
         <div class="ps-container">
+            <div class="row container">
+                <p class="containers">Note: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+            <br />
+            <br />
+
             <div class="ps-page__container">
                 <div class="ps-page__left">
                     <div class="ps-product--detail ps-product--fullwidth">
@@ -36,6 +47,9 @@
                                              {% endif %}
                                         </div>
                                     </div>
+                                    <br />
+                                    <p class="containers">Note: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed doariatur. Excepteur sint occaecat cupidatat non
+                                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                                 </figure>
                                 <div class="ps-product__variants" data-item="4" data-md="4" data-sm="4" data-arrow="false">
                                 	{% if product.image_1 %}
@@ -91,7 +105,7 @@
                                     
                                 </div>
                                 <div class="ps-product__specification">
-                                    <p><strong>product id</strong>{{ product.id }}</p>
+                                    <p><strong>Furniture id</strong>{{ product.id }}</p>
                                     <p class="categories"><strong>Only {{ product.quantity }}</strong> left, Hurray up!</p>
                                     
                                 </div>
@@ -104,16 +118,26 @@
 		                            <a class="instagram" href="#"><i class="fa fa-instagram"></i></a>
 		                            <a class="whatsapp" href="whatsapp://send?text=https://www.market.iwlimited.com{{ request.path }}" data-action="share/whatsapp/share"><i class="fa fa-whatsapp"></i></a>
                                 </div>
+                                <br />
+                                <p class="containers">Note: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                             </div>
                         </div>
                         <div class="ps-product__content ps-tab-root">
                             <ul class="ps-tab-list">
-                                    <li class="active"><a href="#tab-1">Description</a></li>
-                                    <li><a href="#tab-2">Specification</a></li>
-                                    <li><a href="#tab-3">Reviews</a></li>
-                                    <li><a href="#tab-4">Images</a></li>
-                                    <li><a href="#tab-5">Installation Video</a></li>
-                                </ul>
+                                <li class="active"><a href="#tab-1">Description</a></li>
+                                <li><a href="#tab-2">Specification</a></li>
+                                <li><a href="#tab-3">Reviews</a></li>
+                                <li><a href="#tab-4">Images</a></li>
+                                <li><a href="#tab-5">Installation Video</a></li>
+                            </ul>
+                            <p class="containers">Note: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodcepteur sint occaecat cupidatat non
+                            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                            <br />
                             <div class="ps-tabs">
                                 <div class="ps-tab active" id="tab-1">
                                     <div class="ps-document">
@@ -263,63 +287,17 @@
 				                 	</div>
 				                 	
 				                 {% endif %}
+                                 <p class="containers">Note: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim venit non
+                                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                         </div>
                     </aside>
                 </div>
             </div>
-            <div class="ps-section--default ps-customer-bought">
-                <div class="ps-section__header">
-                    <h3>Customers who bought this item also bought</h3>
-                </div>
-                <div class="ps-section__content">
-                    <div class="row">
-                    	{% if section_two %}
-                    		{% for item in section_two %}
-				                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6 ">
-				                    <div class="ps-product">
-				                        <div class="ps-product__thumbnail"><a href="{% url 'product:product_detail' item.slug %}"><img src="{{ item.image_1.url }}" alt=""></a>
-				                            <div class="ps-product__badge" style="background-color: {{ item.tag_title_color }}">{{ item.tag_title }}</div>
-				                            <ul class="ps-product__actions">
-						                        <li><a href="{% url 'cart:add_product_to_cart' item.slug %}" data-toggle="tooltip" data-placement="top" title="Add to cart"><i class="icon-bag2"></i></a></li>
-						                        <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#{{ item.slug }}"><i class="icon-eye"></i></a></li>
-						                        <li><a href="{% url 'product:product_detail' item.slug %}" data-toggle="tooltip" data-placement="top" title=""><i class="icon-heart"></i></a></li>
-						                        <li><a href="{% url 'product:product_detail' item.slug %}" data-toggle="tooltip" data-placement="top" title=""><i class="icon-chart-bars"></i></a></li>
-						                    </ul>
-				                        </div>
-				                        <div class="ps-product__container"><a class="ps-product__vendor" href="{% url 'product:product_detail' item.slug %}">{{ item.category }}</a>
-				                            <div class="ps-product__content"><a class="ps-product__title" href="{% url 'product:product_detail' item.slug %}">{{ item.name }}</a>
-				                                <div class="ps-product__rating">
-				                                    <select class="ps-rating" data-read-only="true">
-				                                        <option value="1">1</option>
-				                                        <option value="1">2</option>
-				                                        <option value="1">3</option>
-				                                        <option value="1">4</option>
-				                                        <option value="2">5</option>
-				                                    </select><span>01</span>
-				                                </div>
-				                                <p class="ps-product__price">₦{{ item.price }}</p>
-				                            </div>
-				                            <div class="ps-product__content hover"><a class="ps-product__title" href="{% url 'product:product_detail' item.slug %}">{{ item.name }}</a>
-				                                <p class="ps-product__price">₦{{ item.price }}</p>
-				                            </div>
-				                        </div>
-				                    </div>
-				                </div>
-				              {% endfor %}
-				              {% else %}
-				              	<div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6 ">
-                           			 <div class="ps-product">
-                           			 	<p>Sorry, Nothing Yet!</p>
-									</div>
-								</div>
-								
-							{% endif %}
-                    </div>
-                </div>
-            </div>
+
             <div class="ps-section--default">
                 <div class="ps-section__header">
-                    <h3>Related products</h3>
+                    <h3>Related Furniture</h3>
                 </div>
                 <div class="ps-section__content">
                     <div class="ps-carousel--nav owl-slider" data-owl-auto="true" data-owl-loop="true" data-owl-speed="10000" data-owl-gap="30" data-owl-nav="true" data-owl-dots="true" data-owl-item="6" data-owl-item-xs="2" data-owl-item-sm="2" data-owl-item-md="3" data-owl-item-lg="4" data-owl-item-xl="5" data-owl-duration="1000" data-owl-mousedrag="on">
@@ -362,6 +340,12 @@
                     </div>
                 </div>
             </div>
+            <p class="containers">Note: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
         </div>
     </div>
     

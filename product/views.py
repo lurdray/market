@@ -44,13 +44,15 @@ def ProductDetailView(request, slug):
 		#code for checking if the customer orders more than the available quantity
 		if quantity_k > product.quantity:
 			messages.success(request, "Sorry, There are not enough amout of this product.")
-			return HttpResponseRedirect(reverse("product:all_product"))
+			return HttpResponseRedirect(reverse("product:all_products"))
 
 		else:
 			product.quantity -= quantity_k
 			product.save()
-			distance = GetDistance()
-			total_shipping_charge = (product.shipping_charge * distance)
+			#distance = GetDistance()
+			#total_shipping_charge = (product.shipping_charge * distance)
+			total_shipping_charge = 0
+
 			product_quantity = ProductQuantity.objects.create(product=product, quantity=quantity, total_shipping_charge=total_shipping_charge)
 			product_quantity.save()
 	
@@ -84,6 +86,7 @@ def ProductDetailView(request, slug):
 				review_list.append(item)
 
 		all_products = Product.objects.all()
+		total_price = "N{:,.2f}".format(total_price)
 		context = {"reviews": review_list, "related_products": related_products, "total_price": total_price, "product_quantitys": product_quantitys, "product": product, "section_one": section_one, "section_two": section_two, "section_three": section_three, "all_products": all_products}
 		
 		return render(request, 'product/product_detail.html', context)
@@ -130,6 +133,7 @@ def AllProductView(request):
 	
 		products = sorted(Product.objects.all().order_by("-pub_date"), key=lambda x: random.random())
 
+		total_price = "N{:,.2f}".format(total_price)
 		context = {"total_price": total_price, "product_quantitys": product_quantitys, "products": products}
 		return render(request, 'product/all_product.html', context)
 

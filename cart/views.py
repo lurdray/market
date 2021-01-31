@@ -47,8 +47,9 @@ def AddProductCartView(request, slug):
 	else:
 		product.quantity -= 1
 		product.save()
-		distance = GetDistance()
-		total_shipping_charge = product.shipping_charge * distance
+		#distance = GetDistance()
+		#total_shipping_charge = product.shipping_charge * distance
+		total_shipping_charge = 0
 
 		product_quantity = ProductQuantity.objects.create(product=product, quantity=quantity, total_shipping_charge=total_shipping_charge)
 		product_quantity.save()
@@ -92,6 +93,7 @@ def CartDetailView(request, user_id):
 			qty = int(str(item.quantity))
 			total_price += (item.product.price * qty) + (item.total_shipping_charge * qty)
 	
+		total_price = "N{:,.2f}".format(total_price)
 		section_two = sorted(Product.objects.all().order_by("-pub_date"), key=lambda x: random.random())[:6]
 		context = {"total_price": total_price, "product_quantitys": product_quantitys, "cart": cart, "section_two": section_two}
 		return render(request, 'cart/cart_detail.html', context)
