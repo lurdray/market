@@ -209,17 +209,17 @@
         <nav class="navigation" style="background-color: #6f448b">
             <div class="container">
                 <ul class="menu menu--electronic">
-                    <li><a href="{% url 'product:all_products' %}"><i class="icon-plus"></i> New Arrivals</a>
+                    <li><a href="{% url 'shop:shop' %}"><i class="icon-network"></i> Furniture Shop</a>
                     </li>
-                    <li><a href="{% url 'product:all_products' %}"><i class="icon-star"></i> Hottest Deals</a>
+                    <li><a href="{% url 'cart:cart_detail' request.user.id %}"><i class="icon-bag2"></i> Your Cart</a>
                     </li>
-                    <li><a href="{% url 'product:all_products' %}"><i class="icon-circle"></i> Latest</a>
+                    <li><a href="{% url 'product:all_products' %}"><i class="icon-star"></i> Latest</a>
                     </li>
-                    <li><a href="{% url 'product:all_products' %}"><i class="icon-bag2"></i> Available Stock</a>
+                    <li><a href="{% url 'product:all_products' %}"><i class="icon-star"></i> Available Stock</a>
                     </li>
                     <li><a href="{% url 'product:all_products' %}"><i class="icon-magnifier"></i> Discover</a>
                     </li>
-                    <li><a href="{% url 'product:all_products' %}"><i class="icon-network"></i> Luxury Deals</a>
+                    <li><a href="{% url 'product:all_products' %}"><i class="icon-star"></i> Luxury Deals</a>
                     </li>
 
 

@@ -108,8 +108,10 @@
                 <div class="navigation__right">
                     <ul class="menu">
                         <li class="menu-item-has-children"><a href="{% url 'main:index' %}" style="color: #fff;"><small>Home</small></a><span class="sub-toggle"></span></li>
+                         <li class="menu-item-has-children"><a href="{% url 'shop:shop' %}" style="color: #fff;"><small>Shop</small></a><span class="sub-toggle"></span></li>
                         <li class="menu-item-has-children"><a href="{% url 'cart:cart_detail' request.user.id %}" style="color: #fff;"><small>Cart</small></a><span class="sub-toggle"></span></li>
                         <li class="menu-item-has-children"><a href="{% url 'checkout:checkout' %}" style="color: #fff;"><small>Checkout</small></a><span class="sub-toggle"></span></li>
+
                     </ul>
                     <ul class="navigation__extra">
                         <li><a href=""><i style="color: #f1c40f" class="fa fa-envelope"></i> info@iwlimited.com</a></li>

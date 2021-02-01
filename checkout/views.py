@@ -69,33 +69,41 @@ def CheckoutView(request):
 		
 	else:
 		UserCreatorFunc(request)
-		cart = get_object_or_404(Cart, user__pk=request.user.id)
 
-		try:
-			app_user = AppUser.objects.get(user__pk=request.user.id)
-		except:
-			app_user = None
-
+		cart = Cart.objects.get(user__pk=request.user.id)# get_object_or_404(Cart, user__pk=request.user.id)
 		product_quantitys = cart.product_quantitys.all()
 
-		total_price = 0
-		total_quantity = 0
+		if cart.product_quantitys.count() == 0:
+			messages.success(request, "Sorry, You have nothing to checkout. Add Some!" )
+			return HttpResponseRedirect(reverse("shop:shop"))
 
-		for item in product_quantitys:
-			total_price += (item.product.price * int(str(item.quantity))) + (item.total_shipping_charge * int(str(item.quantity)))
-			
-		if total_price == 0:
-			return HttpResponseRedirect(reverse("checkout:checkout"))
-		elif total_price > 0:
-			if app_user:
-				total_price = "N{:,.2f}".format(total_price)
-				context = {"app_user": app_user, "total_price": total_price, "cart": cart, "product_quantitys": product_quantitys}
-			else:
-				total_price = "N{:,.2f}".format(total_price)
-				context = {"total_price": total_price, "cart": cart, "product_quantitys": product_quantitys}
-			return render(request, 'checkout/checkout.html', context)
 		else:
-			return HttpResponseRedirect(reverse("main:index"))
+
+			try:
+				app_user = AppUser.objects.get(user__pk=request.user.id)
+			except:
+				app_user = None
+
+			
+
+			total_price = 0
+			total_quantity = 0
+
+			for item in product_quantitys:
+				total_price += (item.product.price * int(str(item.quantity))) + (item.total_shipping_charge * int(str(item.quantity)))
+				
+			if total_price == 0:
+				return HttpResponseRedirect(reverse("checkout:checkout"))
+			elif total_price > 0:
+				if app_user:
+					total_price = "N{:,.2f}".format(total_price)
+					context = {"app_user": app_user, "total_price": total_price, "cart": cart, "product_quantitys": product_quantitys}
+				else:
+					total_price = "N{:,.2f}".format(total_price)
+					context = {"total_price": total_price, "cart": cart, "product_quantitys": product_quantitys}
+				return render(request, 'checkout/checkout.html', context)
+			else:
+				return HttpResponseRedirect(reverse("main:index"))
 
 
 

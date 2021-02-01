@@ -84,7 +84,7 @@
 						                            </div>
 						                            <div class="ps-product__container">
 						                                <div class="ps-product__content"><a class="ps-product__title" href="{% url 'product:product_detail' item.slug %}">{{ item.name }}</a>
-						                                    <p class="ps-product__vendor">Sold by:<a href="#">{{ item.category }}</a></p>
+						                                    <p class="ps-product__vendor">Category: <a href="#"> {{ item.category }}</a></p>
 						                                    <ul class="ps-product__desc">
 						                                        <li>{{ item.description }}</li>
 						                                        <li>{{ item.specification }}</li>

@@ -25,8 +25,9 @@
 						<small><b>Email:</b> {{ item.app_user.email }}</small><br />
 						<small><b>Address:</b> {{ item.app_user.address }}</small><br />
 						<small><b>Delivery State:</b> {{ item.app_user.delivery_state }}</small><br />
-						<hr>
-						<small><b>Ordered Products:</b> {{ item.total_products }}</small><br />
+						
+						<br />
+						<small><b>Ordered Products:({{ item.app_user.order_id }})</small><br />
 						<ul>
 							{% for item2 in item.cart.product_quantitys.all %}
 								<li>{{ item2.product.name }}({{ item2.quantity }})</li>
@@ -36,6 +37,7 @@
 						<small><b>Total Price:</b> N{{ item.cart.total_price }}</small><br />
 						<small><b>Order Note:</b> {{ item.order_note }}</small><br />
 						<small><b>Payment Status:</b> {{ item.status }}</small>
+						<hr>
 						<br/><br/><br/><br />
 
 					{% endfor %}

@@ -36,6 +36,7 @@ class Product(models.Model):
 	pdf_link = models.CharField(max_length=150)
 
 	description = models.TextField(default="none")
+	specification = models.TextField(default="none")
 
 	reviews = models.ManyToManyField(Review, through="ProductReviewConnector", through_fields=("product", "review"),)
 
