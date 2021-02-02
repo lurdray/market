@@ -203,7 +203,7 @@
                 <div class="ps-cart__content">
                     {% if product_quantitys %}
                            {% for item in product_quantitys %}
-                    <div class="ps-product--cart-mobile">
+                    <div class="container ps-product--cart-mobile">
                         <div class="ps-product__thumbnail"><a href="#"><img src="{{ item.product.image_1.url }}" alt=""></a></div>
                         <div class="ps-product__content"><a class="ps-product__remove" href="{% url 'cart:remove_product_cart' item.product.slug %}"><i class="icon-cross"></i></a>
                         <a href="{% url 'product:product_detail' item.product.slug %}">{{ item.product.name }}</a><br />
@@ -258,9 +258,30 @@
     </div>
     <div class="navigation--list">
         <div class="navigation__content">
-        <a class="navigation__item ps-toggle--sidebar" href="#menu-mobile"><i class="icon-menu"></i><span> Menu</span></a><a class="navigation__item ps-toggle--sidebar" href="#navigation-mobile"><i class="icon-list4"></i><span> Categories</span>
-        </a>
-        <a class="navigation__item ps-toggle--sidebar" href="#cart-mobile"><i class="icon-bag2"></i><span style="color: #5a6981"> Cart</span></a></div>
+            <a class="navigation__item ps-toggle--sidebar" href="#menu-mobile">
+                <i class="icon-menu"></i><span> Menu</span>
+            </a>
+            <a class="navigation__item ps-toggle--sidebar" href="#navigation-mobile">
+                <i class="icon-list4"></i><span> Categories</span></a>
+            <a class="navigation__item ps-toggle--sidebar" href="#search-sidebar">
+                <i class="icon-magnifier"></i><span> Search</span>
+            </a>
+              <a class="navigation__item ps-toggle--sidebar" href="#cart-mobile">
+                <i class="icon-bag2"></i><span> Cart</span>
+              </a>
+        </div>
+    </div>
+    <div class="ps-panel--sidebar" id="search-sidebar">
+        <div class="ps-panel__header">
+            <form class="ps-form--search-mobile" method="post" action="/search">
+                    {% csrf_token %}
+                <div class="form-group--nest">
+                    <input name="query" class="form-control" type="text" placeholder="Search for any furniture...">
+                    <button><i class="icon-magnifier"></i></button>
+                </div>
+            </form>
+        </div>
+        <div class="navigation__content"></div>
     </div>
     
     
@@ -268,28 +289,26 @@
             
     {% endblock search_content %}
     
-    
-    
+
     <div class="ps-panel--sidebar" id="menu-mobile">
         <div class="ps-panel__header">
             <h3>Menu</h3>
         </div>
         <div class="ps-panel__content">
             <ul class="menu--mobile">
-                <li class="menu-item-has-children"><a href="{% url 'main:index' %}">Home</a><span class="sub-toggle"></span>
+                <li class="current-menu-item menu-item-has-children"><a href="{% url 'main:index' %}">Home</a><span class="sub-toggle"></span>
                 </li>
-                <li class="menu-item-has-children"><a href="{% url 'main:index' %}">Shop</a><span class="sub-toggle"></span>
+                <li class="current-menu-item menu-item-has-children"><a href="{% url 'shop:shop' %}">Shop</a><span class="sub-toggle"></span>
                 </li>
-                <li class="menu-item-has-children"><a href="{% url 'cart:cart_detail' request.user.id %}">My Cart</a><span class="sub-toggle"></span>
+
+                <li class="current-menu-item menu-item-has-children"><a href="{% url 'cart:cart_detail' request.user.id %}">Cart</a><span class="sub-toggle"></span>
                 </li>
-                            </ul>
-                        </div>
-                    </div>
+                <li class="current-menu-item menu-item-has-children"><a href="{% url 'checkout:checkout' %}">Checkout</a><span class="sub-toggle"></span>
                 </li>
             </ul>
         </div>
     </div>
-    
+
             {% block content %}
             
             {% endblock content %}
@@ -345,6 +364,7 @@
                     <h4 class="widget-title" style="color: #f1c40f">Menu</h4>
                     <ul class="ps-list--link">
                         <li><a href="{% url 'main:index' %}" style="color: #fff"><i style="color: #f1c40f" class="fa fa-home"></i> Home</a></li>
+                        <li><a href="{% url 'shop:shop' %}" style="color: #fff"><i style="color: #f1c40f" class="fa fa-home"></i> Shop</a></li>
                         <li><a href="{% url 'cart:cart_detail' request.user.id %}" style="color: #fff"><i style="color: #f1c40f" class="fa fa-shopping-bag"></i> My Cart</a></li>
                         <li><a href="{% url 'checkout:checkout' %}" style="color: #fff"><i style="color: #f1c40f" class="fa fa-credit-card"></i> Checkout</a></li>
                     </ul>
@@ -352,7 +372,7 @@
             </div>
             <div class="ps-footer__copyright">
                 <p style="color: #fff">© 2020 Interior Woodwork Limited. All Rights Reserved</p>
-                <p><span style="color: #fff">Payment Methods:</span><a href="#"><img src="{% static 'main/img/payment-method/paypal.png' %}" alt=""></a><a href="#"><img src="{% static 'main/img/payment-method/visa.png' %}" alt=""></a><a href="#"><img src="{% static 'main/img/payment-method/mastercard.png' %}" alt=""></a><a href="#"><img src="{% static 'main/img/payment-method/express.png' %}" alt=""></a><a href="#"><img src="{% static 'main/img/payment-method/discover.png' %}" alt=""></a></p>
+                <p><span style="color: #fff">Payment Methods:</span><a href="#" style="color: #fff;"> Bank Transfer(Only)</p>
             </div>
         </div>
     </footer>

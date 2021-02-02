@@ -27,6 +27,40 @@ def GetDistance():
 
 
 
+def BuyNowView(request, slug):
+	quantity = 1
+	quantity = Quantity.objects.create(quantity=quantity)
+	quantity.save()
+		
+	user_id = request.user.id
+		
+	cart = get_object_or_404(Cart, user__pk=user_id)
+	product = get_object_or_404(Product, slug=slug)
+	
+	#code for checking if the customer orders more than the available quantity
+	if product.quantity < 1:
+		messages.success(request, "Sorry, There are not enough amout of this product.")
+		return HttpResponseRedirect(reverse("main:index"))
+			
+	else:
+		product.quantity -= 1
+		product.save()
+		#distance = GetDistance()
+		#total_shipping_charge = product.shipping_charge * distance
+		total_shipping_charge = 0
+
+		product_quantity = ProductQuantity.objects.create(product=product, quantity=quantity, total_shipping_charge=total_shipping_charge)
+		product_quantity.save()
+		
+		cp = CartProductQuantityConnector(cart=cart, product_quantity=product_quantity)
+		cp.save()
+		messages.success(request, "Product Successfully Added to Cart")
+
+		return HttpResponseRedirect(reverse("checkout:checkout"))
+
+
+
+
 
 def ProductDetailView(request, slug):
 	if request.method == "POST":
@@ -86,7 +120,7 @@ def ProductDetailView(request, slug):
 				review_list.append(item)
 
 		all_products = Product.objects.all()
-		total_price = "N{:,.2f}".format(total_price)
+		total_price = "{:,.2f}".format(total_price)
 		context = {"reviews": review_list, "related_products": related_products, "total_price": total_price, "product_quantitys": product_quantitys, "product": product, "section_one": section_one, "section_two": section_two, "section_three": section_three, "all_products": all_products}
 		
 		return render(request, 'product/product_detail.html', context)
@@ -133,7 +167,7 @@ def AllProductView(request):
 	
 		products = sorted(Product.objects.all().order_by("-pub_date"), key=lambda x: random.random())
 
-		total_price = "N{:,.2f}".format(total_price)
+		total_price = "{:,.2f}".format(total_price)
 		context = {"total_price": total_price, "product_quantitys": product_quantitys, "products": products}
 		return render(request, 'product/all_product.html', context)
 

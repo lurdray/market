@@ -4,16 +4,11 @@
 
 
 {% block content %}
-<div class="container text-center">
+<div class="container text-centers">
 	<br><br> 
     <div class="row container">
       <br />
-      <p>Note: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-      cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-      proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      <p>Welcome to the Payment Page. We have verified your order list and added the shipping cost to the cost of items in your cart. we will need you to forward your unique order ID to us, after payment, so we can track your transaction and get your order ready for delivery. The accepted payment method is the bank transfer method. The details of the receiving account is on your screen. Call us if there is anything you want us to clarify.</p>
     </div>
     <br />
     <br />
@@ -21,16 +16,17 @@
 
           <div class="card col-xl-6 col-lg-6 col-md-6 col-sm-12">
             <div class="ps-form__total">
-                <h3 class="ps-form__heading">Your Order with Shipping Fee!</h3>
+              <br>
+                <h3 class="ps-form__heading" style="text-align: left; color: #666;">Your Order with Shipping Fee!</h3>
                 <div class="content">
                     <div class="ps-block--checkout-total">
                         <div class="ps-block__header">
                         </div>
                         <div class="ps-block__content">
                             <table class="table ps-block__products container">
-                                <tbody>
+                                <tbody style="text-align: left;">
                                   {% if shippings_product_quantitys %}
-                                    <ul>
+                                    <ul style="text-align: left;">
                                     {% for item, shipping in shippings_product_quantitys %}
                                             
                                                 <li>
@@ -60,7 +56,7 @@
                                   {% endif %}
                                 </tbody>
                             </table>
-                            <h3>Total <span>₦{{ total_price }}</span></h3>
+                            <h3 style="text-align: left; color:  #666;">Total <span>₦{{ total_price }}</span></h3>
                             <br />
                         </div>
                     </div>
@@ -68,37 +64,30 @@
             </div>
         </div>
 
-
-                           
-
-        <div class="card col-xl-6 col-lg-6 col-md-6 col-sm-12"> 
-
+        <div class="card col-xl-6 col-lg-6 col-md-6 col-sm-12" style="text-align: left;">
+          <div class="ps-form__total">
+              <br>
           <p>
-            Make Payments to:
+
+            <b style="font-size: 26px; margin-top: 35px">Make Payments to:</b>
             <br />
-            Bank: Zenith Bank
+            <strong>Bank:</strong> Zenith Bank
             <br />
-            Account Name: Interior Woodwork Limited.
+            <strong>Account Name:</strong> Interior Woodwork Limited.
             <br />
-            Account Number: 0123 332 232
+            <strong>Account Number:</strong> 0123 332 232
             <br />
             <br />
             <br />
-            Order Id: {{ app_user.order_id }}
+            <strong style="font-size: 26px;">Order Id: {{ app_user.order_id }}</strong>
           </p>
-          <br />
-          <p><br>You may proceed to make payment, so we can process your order.<br />We are also open to answer your questions; <br /><br />Contact us: <a href="tel:+2348099999068"><h2>(+234) 809 999 9068</h2></a></p>
+          <p><br>You may proceed to make payment, so we can process your order.<br />We are also open to answer your questions; <br /><br />Contact us: <a href="tel:+2348099999068"><h2 style="color: #666;">(+234) 809 999 9068</h2></a></p>
           <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <br><br> 
           <button class="ps-btn col-md-6 col-sm-12">Complete!</button> 
           <br><br> 
-          <p>Note: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <p>Why choose the transfer option? It’s true, a couple of persons will want to ask this question. We want to intimate you with the fact that over the years, we have gathered from our transactions with clients that; paying via transfer is the safest. You will not have to expose your card information and other sensitive details that can grant a third party or any fraudster the opportunity to exploit you. We are not just interested in your satisfaction, but also want to build a bid of trust and integrity with you. </p>
         </form>
 
 

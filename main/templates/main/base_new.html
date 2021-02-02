@@ -289,8 +289,9 @@
         <div class="ps-panel__header">
             <h3>Shopping Cart</h3>
         </div>
-        <div class="navigation__content">
+        <div class="container navigation__content">
             <div class="ps-cart--mobile">
+                <br />
                 {% if product_quantitys %}
                   {% for item in product_quantitys %}
                   <div class="ps-product--cart-mobile">
@@ -375,6 +376,9 @@
             <ul class="menu--mobile">
                 <li class="current-menu-item menu-item-has-children"><a href="{% url 'main:index' %}">Home</a><span class="sub-toggle"></span>
                 </li>
+                <li class="current-menu-item menu-item-has-children"><a href="{% url 'shop:shop' %}">Shop</a><span class="sub-toggle"></span>
+                </li>
+
                 <li class="current-menu-item menu-item-has-children"><a href="{% url 'cart:cart_detail' request.user.id %}">Cart</a><span class="sub-toggle"></span>
                 </li>
                 <li class="current-menu-item menu-item-has-children"><a href="{% url 'checkout:checkout' %}">Checkout</a><span class="sub-toggle"></span>
@@ -473,7 +477,7 @@
             </div>
             <div class="ps-footer__copyright">
                 <p style="color: #fff">© 2020 Interior Woodwork Limited. All Rights Reserved</p>
-                <p><span style="color: #fff">Payment Methods:</span><a href="#"><img src="{% static 'main/img/payment-method/paypal.png' %}" alt=""></a><a href="#"><img src="{% static 'main/img/payment-method/visa.png' %}" alt=""></a><a href="#"><img src="{% static 'main/img/payment-method/mastercard.png' %}" alt=""></a><a href="#"><img src="{% static 'main/img/payment-method/express.png' %}" alt=""></a><a href="#"><img src="{% static 'main/img/payment-method/discover.png' %}" alt=""></a></p>
+                <p><span style="color: #fff">Payment Methods:</span><a href="#" style="color: #fff;"> Bank Transfer(Only)</p>
             </div>
         </div>
     </footer>

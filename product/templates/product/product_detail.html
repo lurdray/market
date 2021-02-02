@@ -9,12 +9,7 @@
 <div class="ps-page--product">
         <div class="ps-container">
             <div class="row container">
-                <p class="containers">Note: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <p class="containers">Here are the details of this product. We have captured it at different angles and elevations in order for you to properly check it out and be satisfied. Kindly use the side/slide button to see other views of the product. </p>
             </div>
             <br />
             <br />
@@ -48,8 +43,7 @@
                                         </div>
                                     </div>
                                     <br />
-                                    <p class="containers">Note: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed doariatur. Excepteur sint occaecat cupidatat non
-                                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                    <p class="containers">The steps to purchasing our furniture online are quite simple: select the quantity you would like to order and use the “Buy Now” button to purchase immediately. You may want to pick furniture from other categories in addition to this; simply add this product to your cart instead of using the “Buy Now” button and then go to other categories to add more products before buying.</p>
                                 </figure>
                                 <div class="ps-product__variants" data-item="4" data-md="4" data-sm="4" data-arrow="false">
                                 	{% if product.image_1 %}
@@ -100,7 +94,7 @@
 											<button type="submit" class="ps-btn ps-btn--black">Add to cart</a>
 											<br />
 										</form>
-                                    </figure><a class="ps-btn" href="{% url 'cart:cart_detail' request.user.id %}">Buy Now</a>
+                                    </figure><a class="ps-btn" href="{% url 'product:buy_now' product.slug %}">Buy Now</a>
                                     <div class="ps-product__actions"><a href="#"><i class="icon-heart"></i></a><a href="#"><i class="icon-chart-bars"></i></a></div>
                                     
                                 </div>
@@ -119,12 +113,7 @@
 		                            <a class="whatsapp" href="whatsapp://send?text=https://www.market.iwlimited.com{{ request.path }}" data-action="share/whatsapp/share"><i class="fa fa-whatsapp"></i></a>
                                 </div>
                                 <br />
-                                <p class="containers">Note: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                <p class="containers">To further serve you better, follow us on all our social media handles so you can get first class information about our factory or showroom as they unfold. We also post our latest products on daily basis. Do well to leave a review so we can access your satisfaction and be more committed to giving you the best.</p>
                             </div>
                         </div>
                         <div class="ps-product__content ps-tab-root">
@@ -287,9 +276,7 @@
 				                 	</div>
 				                 	
 				                 {% endif %}
-                                 <p class="containers">Note: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim venit non
-                                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                 <p class="containers">There are also other products in this category that you could request for. In addition to that, you can give us your specifications, in case you have special designs in mind. We deliver at the fastest speed you can ever imagine. You could just be coming in contact with your fondest and most reliable online furniture store.</p>
                         </div>
                     </aside>
                 </div>

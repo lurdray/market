@@ -95,15 +95,11 @@ def IndexView(request):
 		product = Product.objects.all()
 
 		all_products = sorted(Product.objects.all().order_by("-pub_date"), key=lambda x: random.random())
-		section_one = sorted(Product.objects.filter(section="section_one").order_by("-pub_date"), key=lambda x: random.random())[:2]
-		section_two = sorted(Product.objects.filter(section="section_two").order_by("-pub_date"), key=lambda x: random.random())[:10]
-		section_three = sorted(Product.objects.filter(section="section_three").order_by("-pub_date"), key=lambda x: random.random())[:10]
-		section_four = sorted(Product.objects.filter(section="section_four").order_by("-pub_date"), key=lambda x: random.random())[:10]
-		section_five = sorted(Product.objects.filter(section="section_five").order_by("-pub_date"), key=lambda x: random.random())[:10]
+		section_one = sorted(Product.objects.filter(section="section_one").order_by("-pub_date"), key=lambda x: random.random())[:10]
 	
 		#return HttpResponse(section_four)
-		total_price = "N{:,.2f}".format(total_price)
-		context = {"total_price": total_price, "product_quantitys": product_quantitys, "product": product, "all_products": all_products, "section_one": section_one, "section_two": section_two, "section_three": section_three, "section_four": section_four, "section_five": section_five}
+		total_price = "{:,.2f}".format(total_price)
+		context = {"total_price": total_price, "product_quantitys": product_quantitys, "product": product, "all_products": all_products, "section_one": section_one}
 		return render(request, 'main/index.html', context)
 
 
@@ -122,7 +118,6 @@ def CategoryView(request, category):
 		product_one = Product.objects.all()
 		product_two = Product.objects.all()
 
-
 		#product_one = Product.objects.filter(category=category)
 		#product_two = Product.objects.filter(category=category)
 
@@ -133,7 +128,7 @@ def CategoryView(request, category):
 		for item in product_quantitys:
 			total_price += (item.product.price * int(str(item.quantity))) + (item.total_shipping_charge * int(str(item.quantity)))
 
-		total_price = "N{:,.2f}".format(total_price)
+		total_price = "{:,.2f}".format(total_price)
 		context = {"category": category, "total_price": total_price, "product_quantitys": product_quantitys, 'product_one': product_one, "product_two": product_two}
 		return render(request, 'main/category.html', context)
 
@@ -164,7 +159,7 @@ def SearchView(request):
 		for item in product_quantitys:
 			total_price += (item.product.price * int(str(item.quantity))) + (item.total_shipping_charge * int(str(item.quantity)))
 
-		total_price = "N{:,.2f}".format(total_price)
+		total_price = "{:,.2f}".format(total_price)
 		context = {"total_price": total_price, "product_quantitys": product_quantitys, 'products': products}
 		return render(request, 'product/all_product.html', context)
 
@@ -195,7 +190,7 @@ def FaqsView(request):
 		for item in product_quantitys:
 			total_price += (item.product.price * int(str(item.quantity))) + (item.total_shipping_charge * int(str(item.quantity)))
 
-		total_price = "N{:,.2f}".format(total_price)
+		total_price = "{:,.2f}".format(total_price)
 		context = {"total_price": total_price, "product_quantitys": product_quantitys, 'products': products}
 		return render(request, 'main/faqs.html', context)
 
@@ -217,7 +212,7 @@ def PrivacyView(request):
 		for item in product_quantitys:
 			total_price += (item.product.price * int(str(item.quantity))) + (item.total_shipping_charge * int(str(item.quantity)))
 
-		total_price = "N{:,.2f}".format(total_price)
+		total_price = "{:,.2f}".format(total_price)
 		context = {"total_price": total_price, "product_quantitys": product_quantitys, 'products': products}
 		return render(request, 'main/privacy.html', context)
 
@@ -240,7 +235,7 @@ def TermsConditionView(request):
 		for item in product_quantitys:
 			total_price += (item.product.price * int(str(item.quantity))) + (item.total_shipping_charge * int(str(item.quantity)))
 
-		total_price = "N{:,.2f}".format(total_price)
+		total_price = "{:,.2f}".format(total_price)
 
 		context = {"total_price": total_price, "product_quantitys": product_quantitys, 'products': products}
 		return render(request, 'main/terms.html', context)
@@ -265,7 +260,7 @@ def ShippingView(request):
 			total_price += (item.product.price * int(str(item.quantity))) + (item.total_shipping_charge * int(str(item.quantity)))
 
 
-		total_price = "N{:,.2f}".format(total_price)
+		total_price = "{:,.2f}".format(total_price)
 		
 		context = {"total_price": total_price, "product_quantitys": product_quantitys, 'products': products}
 		return render(request, 'main/shipping.html', context)

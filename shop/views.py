@@ -67,7 +67,7 @@ def ShopView(request):
 			qty = int(str(item.quantity))
 			total_price += (item.product.price * qty) + (item.total_shipping_charge * qty)
 	
-		total_price = "N{:,.2f}".format(total_price)
+		total_price = "{:,.2f}".format(total_price)
 
 		products = sorted(Product.objects.all().order_by("-pub_date"), key=lambda x: random.random())[:12]
 

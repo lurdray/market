@@ -186,6 +186,10 @@
                                 <label for="color-8"></label>
                             </div>
                         </figure>
+                        <br  />
+                        <p>
+                            Use the product filter to sort our products according to your chosen feature or criteria. With this you quickly access furniture of some classifications. For instance, you can access all furniture within certain range of prices by adjusting the price range.
+                        </p>
                         
                         <div class="form-group submit">
                             <button class="ps-btn">Go</button>
@@ -197,7 +201,12 @@
                 <div class="ps-layout__right">
                     <div class="ps-page__header">
                         <h1>Explore our Furniture Shop</h1>
-                        <div class="ps-carousel--nav-inside owl-slider" data-owl-auto="true" data-owl-loop="true" data-owl-speed="5000" data-owl-gap="0" data-owl-nav="true" data-owl-dots="true" data-owl-item="1" data-owl-item-xs="1" data-owl-item-sm="1" data-owl-item-md="1" data-owl-item-lg="1" data-owl-duration="1000" data-owl-mousedrag="on"><a href="shop-default.html"><img src="{% static 'main/img/gn1.png' %}" alt=""></a><a href="shop-default.html"><img src="{% static 'main/img/gn2.png' %}" alt=""></a><a href="shop-default.html"><img src="{% static 'main/img/gn3.png' %}" alt=""></a></div>
+                        <div class="ps-carousel--nav-inside owl-slider" data-owl-auto="true" data-owl-loop="true" data-owl-speed="5000" data-owl-gap="0" data-owl-nav="true" data-owl-dots="true" data-owl-item="1" data-owl-item-xs="1" data-owl-item-sm="1" data-owl-item-md="1" data-owl-item-lg="1" data-owl-duration="1000" data-owl-mousedrag="on">
+                            <a href="#"><img src="{% static 'main/img/shop1.png' %}" alt=""></a>
+                            <a href="#"><img src="{% static 'main/img/shop2.png' %}" alt=""></a>
+                            <a href="#"><img src="{% static 'main/img/shop3.png' %}" alt=""></a>
+                            <a href="#"><img src="{% static 'main/img/shop4.png' %}" alt=""></a>
+                        </div>
                     </div>
                     <div class="ps-block--shop-features">
                         <div class="ps-block__header">
@@ -207,27 +216,27 @@
                         <div class="ps-block__content">
                             <div class="owl-slider" id="bestsale" data-owl-auto="true" data-owl-loop="true" data-owl-speed="10000" data-owl-gap="30" data-owl-nav="false" data-owl-dots="false" data-owl-item="4" data-owl-item-xs="2" data-owl-item-sm="2" data-owl-item-md="2" data-owl-item-lg="3" data-owl-item-xl="4" data-owl-duration="1000" data-owl-mousedrag="on">
                                 <div class="ps-product">
-                                    <div class="ps-product__thumbnail"><a href="{% url 'main:category' 'living_room' %}"><img src="img/products/shop/best/1.jpg" alt=""></a>
+                                    <div class="ps-product__thumbnail"><a href="{% url 'main:category' 'living_room' %}"><img src="{% static 'main/img/cat1.png' %}" alt=""></a>
                                     </div>
-                                    <div class="ps-product__container"><a class="ps-product__vendor" href="{% url 'main:category' 'living_room' %}">Living Room</a>
+                                    <div class="ps-product__container"><a class="ps-product__vendor" href="{% url 'main:category' 'living_room' %}">Bed Room</a>
                                     </div>
                                 </div>
                                 <div class="ps-product">
-                                    <div class="ps-product__thumbnail"><a href="{% url 'main:category' 'kitchen' %}"><img src="img/products/shop/best/1.jpg" alt=""></a>
+                                    <div class="ps-product__thumbnail"><a href="{% url 'main:category' 'kitchen' %}"><img src="{% static 'main/img/cat2.png' %}" alt=""></a>
                                     </div>
                                     <div class="ps-product__container"><a class="ps-product__vendor" href="{% url 'main:category' 'kitchen' %}">Kitchen</a>
                                     </div>
                                 </div>
                                 <div class="ps-product">
-                                    <div class="ps-product__thumbnail"><a href="{% url 'main:category' 'bedroom' %}"><img src="img/products/shop/best/1.jpg" alt=""></a>
+                                    <div class="ps-product__thumbnail"><a href="{% url 'main:category' 'bedroom' %}"><img src="{% static 'main/img/cat3.png' %}" alt=""></a>
                                     </div>
-                                    <div class="ps-product__container"><a class="ps-product__vendor" href="{% url 'main:category' 'bedroom' %}">Bedroom</a>
+                                    <div class="ps-product__container"><a class="ps-product__vendor" href="{% url 'main:category' 'bedroom' %}">Office</a>
                                     </div>
                                 </div>
                                 <div class="ps-product">
-                                    <div class="ps-product__thumbnail"><a href="{% url 'main:category' 'office' %}"><img src="img/products/shop/best/1.jpg" alt=""></a>
+                                    <div class="ps-product__thumbnail"><a href="{% url 'main:category' 'office' %}"><img src="{% static 'main/img/cat4.png' %}" alt=""></a>
                                     </div>
-                                    <div class="ps-product__container"><a class="ps-product__vendor" href="{% url 'main:category' 'office' %}">Office</a>
+                                    <div class="ps-product__container"><a class="ps-product__vendor" href="{% url 'main:category' 'office' %}">Living Room</a>
                                     </div>
                                 </div>
                             </div>
@@ -236,12 +245,7 @@
 
                         <br />
                         <br />
-                        <p class="containers">Note: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <p class="containers">Interior Woodwork Limited online store contain different variety of products you will want explore. We are aware of the fact that the beauty of your homes or offices needs a chance to have an expression and we give you the best furniture to make that a possibility. You cannot exhaust our catalog and not find the piece that meets your desire. </p>
                         <br />
                         <br />
 
@@ -349,12 +353,7 @@
     </div>
 
     <div class="container">
-        <p>Note: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p>With comfortable Home or Office Furniture, you can now feel better relaxed everywhere you go. Set up every room in your home with the best Furniture you want. Order for Furniture in categories, such as: Kitchen, Living room, Bedroom, Office and others, online and have them delivered to your doorstep.</p>
         <br />
         <br />
     </div>

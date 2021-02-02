@@ -96,10 +96,10 @@ def CheckoutView(request):
 				return HttpResponseRedirect(reverse("checkout:checkout"))
 			elif total_price > 0:
 				if app_user:
-					total_price = "N{:,.2f}".format(total_price)
+					total_price = "{:,.2f}".format(total_price)
 					context = {"app_user": app_user, "total_price": total_price, "cart": cart, "product_quantitys": product_quantitys}
 				else:
-					total_price = "N{:,.2f}".format(total_price)
+					total_price = "{:,.2f}".format(total_price)
 					context = {"total_price": total_price, "cart": cart, "product_quantitys": product_quantitys}
 				return render(request, 'checkout/checkout.html', context)
 			else:
@@ -190,10 +190,10 @@ def CompleteOrderView(request, order_id):
 
 		for item in product_quantitys:
 			total_price += (item.product.price * int(str(item.quantity))) + (get_state_shipping(item.product.slug, delivery_state) * int(str(item.quantity)))
-			shippings.append("N{:,.2f}".format((get_state_shipping(item.product.slug, delivery_state) * int(str(item.quantity)))))
+			shippings.append("{:,.2f}".format((get_state_shipping(item.product.slug, delivery_state) * int(str(item.quantity)))))
 
 		shippings_product_quantitys = zip(product_quantitys, shippings)
-		total_price = "N{:,.2f}".format(total_price)
+		total_price = "{:,.2f}".format(total_price)
 
 		context = {"app_user": app_user, "total_price": total_price, "cart": cart, "shippings_product_quantitys": shippings_product_quantitys}
 		return render(request, 'checkout/complete.html', context)

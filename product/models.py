@@ -18,12 +18,12 @@ class Review(models.Model):
 
 
 class Product(models.Model):
-	name = models.CharField(max_length=150)
+	name = models.CharField(max_length=150, default="test")
 	tag_title = models.CharField(max_length=150, default="Sale")
 	tag_title_color = models.CharField(max_length=150, default="orange")
 	section = models.CharField(max_length=150, default="section_one")
 
-	category = models.CharField(max_length=150, default=" ")
+	category = models.CharField(max_length=150, default="living_room")
 
 	image_1 = models.FileField(upload_to='product/image_1/', blank=True)
 	image_2 = models.FileField(upload_to='product/image_2/', blank=True)
@@ -32,8 +32,8 @@ class Product(models.Model):
 	image_5 = models.FileField(upload_to='product/image_5/', blank=True)
 	image_6 = models.FileField(upload_to='product/image_6/', blank=True)
 
-	video_link = models.CharField(max_length=150)
-	pdf_link = models.CharField(max_length=150)
+	video_link = models.CharField(max_length=150, default="none")
+	pdf_link = models.CharField(max_length=150, default="none")
 
 	description = models.TextField(default="none")
 	specification = models.TextField(default="none")
@@ -44,7 +44,7 @@ class Product(models.Model):
 	threshold = models.IntegerField(blank=True, null=True, default=1)
 	price = models.IntegerField(default=1)
 	old_price = models.IntegerField(default=1)
-	rating = models.IntegerField(blank=True, null=True)
+	rating = models.IntegerField(blank=True, null=True, default="none")
 	shipping_charge = models.FloatField(default=1)
 
 	delivery_info = models.CharField(max_length=150, default="none")
